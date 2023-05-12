@@ -24,6 +24,7 @@ if __name__ == "__main__":
 
     i = 0
     results = []
+    m = 0
     while environ.episode < episodes:
         obs = environ.reset()
         done = False
