@@ -37,4 +37,4 @@ def eval_fitness(states):
     else:
         fitness = -10
 
-    return round(fitness, 3), points_list
+    return round(fitness, 3), points_list, map_points

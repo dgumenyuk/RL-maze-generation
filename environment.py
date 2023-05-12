@@ -61,6 +61,7 @@ class RobotEnv(Env):
         #self.all_fitness = []
         self.steps = 0
         self.points = []
+        self.map_points = []
         self.reward = 0
 
         self.done = False
@@ -95,7 +96,7 @@ class RobotEnv(Env):
 
         self.state[self.steps] = self.set_state(action)
 
-        self.fitness, self.points = eval_fitness(self.state)  # - discount
+        self.fitness, self.points, self.map_points = eval_fitness(self.state)  # - discount
         #current_state = self.state.copy()
 
         improvement = self.fitness - self.prev_fitness
@@ -124,7 +125,7 @@ class RobotEnv(Env):
             if self.fitness > self.max_fitness:
                 reward += self.fitness
 
-        #self.render()
+        self.render()
 
         self.prev_fitness = self.fitness
         self.reward = reward
@@ -138,7 +139,8 @@ class RobotEnv(Env):
         if self.policy == "MlpPolicy":
             observations = [coordinate for tuple in self.state for coordinate in tuple]
         elif self.policy == "CnnPolicy":
-            observations = np.reshape(self.points, (cf.model["map_size"], cf.model["map_size"], 1))
+            map_points = self.map_points.astype('uint8')*255
+            observations = np.reshape(map_points, (cf.model["map_size"], cf.model["map_size"], 1))
         else:
             raise ValueError("Invalid policy type")
 
@@ -147,7 +149,7 @@ class RobotEnv(Env):
     def reset(self):
         self.generate_init_state()
 
-        self.prev_fitness, points = eval_fitness(self.state)
+        self.prev_fitness, points, map_points = eval_fitness(self.state)
 
         #self.all_states = []
         #self.all_fitness = []
@@ -161,7 +163,8 @@ class RobotEnv(Env):
         if self.policy == "MlpPolicy":
             observations = [coordinate for tuple in self.state for coordinate in tuple]
         elif self.policy == "CnnPolicy":
-            observations = np.reshape(points, (cf.model["map_size"], cf.model["map_size"], 1))
+            map_points = map_points.astype('uint8')*255
+            observations = np.reshape(map_points, (cf.model["map_size"], cf.model["map_size"], 1))
         else:
             raise ValueError("Invalid policy type")
 

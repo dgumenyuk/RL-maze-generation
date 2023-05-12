@@ -22,8 +22,8 @@ if __name__ == "__main__":
     novelty_list = []
 
     m = 0
-    policy = "MlpPolicy"
-    #policy = "CnnPolicy"
+    #policy = "MlpPolicy"
+    policy = "CnnPolicy"
     for m in range(5):
 
 
