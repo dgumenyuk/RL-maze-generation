@@ -125,7 +125,7 @@ class RobotEnv(Env):
             if self.fitness > self.max_fitness:
                 reward += self.fitness
 
-        self.render()
+        #self.render()
 
         self.prev_fitness = self.fitness
         self.reward = reward

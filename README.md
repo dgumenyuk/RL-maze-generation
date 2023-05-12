@@ -15,6 +15,11 @@ pip install requirements.txt
 ```
 python train.py
 ```
+Training can take a long time.
+Add this line to the step() function of the environemt if you want to see intermediate steps.
+```
+self.render()
+```
 3. Evaluate the produced model:
 ```
 python evaluate.py
