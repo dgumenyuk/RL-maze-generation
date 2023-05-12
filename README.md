@@ -1,6 +1,6 @@
 
 <p align="center">
-	<img height="500px" src="images/rigaa_robot.png"/>
+	<img height="500px" src="illustration/rigaa_robot.png"/>
 </p>
 <h1 align="center">
 	RL based maze generation
