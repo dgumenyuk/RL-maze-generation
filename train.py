@@ -55,6 +55,8 @@ if __name__ == "__main__":
 
         episodes = 60
 
+        environ.evaluate = True
+
         i = 0
         results = []
         while environ.episode < episodes:

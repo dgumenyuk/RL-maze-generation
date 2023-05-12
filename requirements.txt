@@ -1,0 +1,6 @@
+
+gym==0.21.0
+matplotlib==3.7.1
+numpy==1.24.3
+Shapely==1.7.1
+stable-baselines3==1.8.0

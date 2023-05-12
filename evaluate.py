@@ -19,8 +19,9 @@ if __name__ == "__main__":
      #".\\2023-01-21-rl_model-0_220000_steps.zip"#"rl_model_09-24_mlp_v0_0_500000_steps.zip"
     model = PPO.load(model_save_path)
 
-
     episodes = 60
+
+    environ.evaluate = True
 
     i = 0
     results = []

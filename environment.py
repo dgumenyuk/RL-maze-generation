@@ -74,6 +74,8 @@ class RobotEnv(Env):
 
         self.max_fitness = 110
 
+        self.evaluate = False
+
     def generate_init_state(self):
         """
         This function generates an initial state for a simulation by randomly assigning values to variables
@@ -122,7 +124,7 @@ class RobotEnv(Env):
             if self.fitness > self.max_fitness:
                 reward += self.fitness
 
-            # self.render()
+        #self.render()
 
         self.prev_fitness = self.fitness
         self.reward = reward
@@ -201,10 +203,14 @@ class RobotEnv(Env):
         img_path = cf.files["img_path"]
         os.makedirs(img_path, exist_ok=True)
 
-        fig.savefig(
-            f"{img_path}{self.episode}_{fit:.2f}.png",
-            bbox_inches="tight"
-        )
+        if self.evaluate:
+            fig.savefig(
+                f"{img_path}{self.episode}_{fit:.2f}.png",
+                bbox_inches="tight"
+            )
+        else:
+            os.makedirs("debug", exist_ok=True)
+            fig.savefig("debug\\debug_step_" + str(self.steps) + ".png")
 
         plt.close(fig)
 

@@ -12,7 +12,7 @@ model = {
 }
 
 files = {
-    "logs_path": ".\\2023-01-28_logs\\",
-    "model_path": ".\\2023-01-28_models\\",
-    "img_path": ".\\2023-01-28_images\\", #".\\2022-10-18_images\\"
+    "logs_path": ".\\2023-05-12_logs\\",
+    "model_path": ".\\2023-05-12_models\\",
+    "img_path": ".\\2023-05-12_images\\", #".\\2022-10-18_images\\"
 }
